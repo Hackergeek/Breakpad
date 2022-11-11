@@ -3,12 +3,13 @@ package com.android.zone;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Environment;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 
 import com.online.breakpad.BreakpadInit;
 
@@ -42,13 +43,10 @@ public class MainActivity extends AppCompatActivity {
 
         findViewById(R.id.bt_crash)
                 .setOnClickListener(
-                        new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                initBreakPad();
-                                nativeCrash();
-                                // copy core dump to sdcard
-                            }
+                        view -> {
+                            initBreakPad();
+                            nativeCrash();
+                            // copy core dump to sdcard
                         });
     }
 
